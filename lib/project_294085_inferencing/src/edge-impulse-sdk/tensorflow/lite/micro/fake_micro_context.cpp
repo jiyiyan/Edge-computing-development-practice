@@ -22,10 +22,6 @@ limitations under the License.
 #include "edge-impulse-sdk/tensorflow/lite/micro/micro_log.h"
 
 namespace tflite {
-
-// Patched by Edge Impulse
-constexpr int FakeMicroContext::kNumScratchBuffers_;
-
 namespace {
 // Dummy static variables to allow creation of dummy MicroAllocator.
 // All tests are guarateed to run serially.

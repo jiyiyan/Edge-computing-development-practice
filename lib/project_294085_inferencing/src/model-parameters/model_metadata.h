@@ -55,17 +55,17 @@
 #define EI_CLASSIFIER_PROJECT_ID                 294085
 #define EI_CLASSIFIER_PROJECT_OWNER              "devin"
 #define EI_CLASSIFIER_PROJECT_NAME               "肌电"
-#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     11
-#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        37
-#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           87
+#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     6
+#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        13
+#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           100
 #define EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME      1
 #define EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE       (EI_CLASSIFIER_RAW_SAMPLE_COUNT * EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME)
 #define EI_CLASSIFIER_INPUT_WIDTH                0
 #define EI_CLASSIFIER_INPUT_HEIGHT               0
 #define EI_CLASSIFIER_INPUT_FRAMES               0
-#define EI_CLASSIFIER_NN_OUTPUT_COUNT            2
+#define EI_CLASSIFIER_NN_OUTPUT_COUNT            3
 #define EI_CLASSIFIER_INTERVAL_MS                40
-#define EI_CLASSIFIER_LABEL_COUNT                2
+#define EI_CLASSIFIER_LABEL_COUNT                3
 #define EI_CLASSIFIER_HAS_ANOMALY                0
 #define EI_CLASSIFIER_FREQUENCY                  25
 #define EI_CLASSIFIER_HAS_MODEL_VARIABLES        1
@@ -85,7 +85,7 @@
 
 #define EI_CLASSIFIER_QUANTIZATION_ENABLED          1
 
-#define EI_CLASSIFIER_COMPILED                      0
+#define EI_CLASSIFIER_COMPILED                      1
 #define EI_CLASSIFIER_HAS_TFLITE_OPS_RESOLVER       1
 
 #define EI_CLASSIFIER_LOAD_IMAGE_SCALING         0
@@ -93,7 +93,7 @@
 
 #define EI_CLASSIFIER_HAS_FFT_INFO               1
 #define EI_CLASSIFIER_LOAD_FFT_32                0
-#define EI_CLASSIFIER_LOAD_FFT_64                1
+#define EI_CLASSIFIER_LOAD_FFT_64                0
 #define EI_CLASSIFIER_LOAD_FFT_128               0
 #define EI_CLASSIFIER_LOAD_FFT_256               0
 #define EI_CLASSIFIER_LOAD_FFT_512               0
@@ -238,8 +238,6 @@ typedef struct {
     uint16_t implementation_version;
     int axes;
     bool scaling;
-    bool scaling_raw;
-    bool padding;
 } ei_dsp_config_imu_syntiant_t;
 
 #endif // _EI_CLASSIFIER_MODEL_METADATA_H_

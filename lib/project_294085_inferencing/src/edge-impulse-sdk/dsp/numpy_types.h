@@ -24,7 +24,6 @@
 #include <stddef.h>
 #ifdef __cplusplus
 #include <functional>
-#include "edge-impulse-sdk/dsp/ei_vector.h"
 #ifdef __MBED__
 #include "mbed.h"
 #endif // __MBED__
@@ -32,7 +31,6 @@
 #include "config.hpp"
 
 #include "../porting/ei_classifier_porting.h"
-
 
 #if EIDSP_TRACK_ALLOCATIONS
 #include "memory.hpp"
@@ -144,8 +142,6 @@ typedef struct ei_matrix {
         return buffer + row * cols;
     }
 
-    ei_matrix(ei_vector<float> &in) : ei_matrix(1, in.size(), in.data()) {
-    }
 #endif // #ifdef __cplusplus
 } matrix_t;
 

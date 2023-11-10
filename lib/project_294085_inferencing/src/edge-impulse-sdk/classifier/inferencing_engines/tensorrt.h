@@ -98,8 +98,7 @@ EI_IMPULSE_ERROR run_nn_inference(
 
     if (impulse->object_detection) {
         switch (impulse->object_detection_last_layer) {
-            case EI_CLASSIFIER_LAST_LAYER_FOMO:
-            case EI_CLASSIFIER_LAST_LAYER_YOLOV5: {
+            case EI_CLASSIFIER_LAST_LAYER_FOMO: {
                 out_data_size = impulse->tflite_output_features_count;
                 break;
             }
@@ -107,6 +106,11 @@ EI_IMPULSE_ERROR run_nn_inference(
                 ei_printf("ERR: SSD models are not supported using TensorRT \n");
                 return EI_IMPULSE_UNSUPPORTED_INFERENCING_ENGINE;
                 break;
+            }
+            case EI_CLASSIFIER_LAST_LAYER_YOLOV5:
+            case EI_CLASSIFIER_LAST_LAYER_YOLOV5_V5_DRPAI: {
+                ei_printf("ERR: YOLOv5 models are not supported using TensorRT \n");
+                return EI_IMPULSE_UNSUPPORTED_INFERENCING_ENGINE;
             }
             default: {
                 ei_printf(
@@ -157,14 +161,10 @@ EI_IMPULSE_ERROR run_nn_inference(
             return EI_IMPULSE_UNSUPPORTED_INFERENCING_ENGINE;
             break;
         }
-        case EI_CLASSIFIER_LAST_LAYER_YOLOV5: {
-            fill_res = fill_result_struct_f32_yolov5(
-                impulse,
-                result,
-                6,
-                out_data,
-                impulse->tflite_output_features_count);
-            break;
+        case EI_CLASSIFIER_LAST_LAYER_YOLOV5:
+        case EI_CLASSIFIER_LAST_LAYER_YOLOV5_V5_DRPAI: {
+            ei_printf("ERR: YOLOv5 models are not supported using TensorRT \n");
+            return EI_IMPULSE_UNSUPPORTED_INFERENCING_ENGINE;
         }
         default: {
             ei_printf(
